@@ -23,6 +23,14 @@ class App extends Component {
     localStorage.setItem("savedNames", savedNamesString);
   }
 
+  componentDidMount() {
+    const savedNamesString = localStorage.getItem("savedNames");
+    if (savedNamesString) {
+      const savedNames = JSON.parse(savedNamesString);
+      this.setState({ names: savedNames });
+    }
+  }
+
   render() {
     return (
       <div className="App">
